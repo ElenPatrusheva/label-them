@@ -1,6 +1,3 @@
-
-//import { threadId } from "worker_threads";
-
 let zones = [];
 
 function initZones(inputZones){
@@ -15,7 +12,6 @@ function initZones(inputZones){
         zones.push(new Zone(zone));
     };
 }
-//TODO: add id, to make it possible to change 
 function Path(points){
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.points = points;
@@ -56,7 +52,6 @@ function Zone(zone, type="poly"){
     this.zoneScale = 1;
     this.pointsList = [];
     svgImg.append(this.node);
-    
 }
 
-//TODO make it scalable, add helping messanges
+// add helping messanges

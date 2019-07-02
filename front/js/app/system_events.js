@@ -14,41 +14,11 @@ function onSave() {
     dc.getJSON();
 }
 
-// /**
-//  * Event fired on close of polygon
-//  * @event onPolygonClosed
-//  * @fires onSave
-//  */
-// function onPolygonClosed(data, calledByHistory = false) {
-//     /*global DataEntity*/
-//     /*eslint no-undef: "error"*/
-//     let de = new DataEntity(data.polygonId);
-//     dc.addEntity(de, data.polygonId);
-
-//     onSave();
-
-//     if (calledByHistory === false) {
-//         addHistoryRecordPolygon(HistoryRecordTypeEnum.ADD_OBJECT, data);
-//     }
-// }
-
 function onZoneSelected(data, calledByHistory = false) {
     dc.selectEntity(data.zoneId);
     setClassesAndParametersValues(dc.getActiveEntity());
 }
-/*
-function onPolygonDeleted(data, calledByHistory = false) {
-    let parameters = dc.getEntitiesParameters(data.polygonId);
-    dc.deleteEntity(data.polygonId);
 
-    onSave();
-
-    if (calledByHistory === false) {
-        resetDOM();
-        addHistoryRecordPolygon(HistoryRecordTypeEnum.DELETE_OBJECT, data, parameters);
-    }
-}
-*/
 /**
  * Event fired on update of object's boolean parameter
  * @event onBoolParamUpdate
@@ -94,13 +64,7 @@ function onObjectClassUpdate(value, calledByHistory = false) {
 
 
 }
-/*
-function onPolygonModified(polygon) {
-    onSave();
 
-    modifyPointsOfPolygonInHistoryRecords(polygon);
-}
-*/
 /**
  * Event fired on update of object's select parameter
  * @event onSelectParamUpdate

@@ -1,6 +1,5 @@
 let btnSave;
 let btnHand;
-let btnPolygon;
 let btnSelector;
 let btnEdit;
 let btnZoomIn;
@@ -37,12 +36,6 @@ function setOnClick(btn) {
             case Tool.hand().buttonId:
                 activeTool = Tool.hand();
                 break;
-            /*
-            case Tool.polygon().buttonId:
-                activeTool = Tool.polygon();
-                break;
-            */
-
             case Tool.selector().buttonId:
                 activeTool = Tool.selector();
                 break;
@@ -84,7 +77,6 @@ function setOnClick(btn) {
 function setElementsOnClick() {
     setOnClick(btnSave);
     setOnClick(btnHand);
-    setOnClick(btnPolygon);
     setOnClick(btnSelector);
     setOnClick(btnEdit);
     setOnClick(btnZoomIn);
@@ -96,7 +88,6 @@ function setElementsOnClick() {
 function getElements() {
     btnSave = document.getElementById(Tool.save().buttonId);
     btnHand = document.getElementById(Tool.hand().buttonId);
-    btnPolygon = document.getElementById(Tool.polygon().buttonId);
     btnSelector = document.getElementById(Tool.selector().buttonId);
     btnEdit = document.getElementById("btn_edit");          // TODO: Modify when edit tool implemented
     btnBrightnessHigh = document.getElementById(Tool.brightnessIncrease().buttonId);
@@ -112,9 +103,6 @@ function initToolbar(acceptMode) {
     /*global initHand*/
     /*eslint no-undef: "error"*/
     initHand();
-    /*global initPolygon*/
-    /*eslint no-undef: "error"*/
-    initPolygon();
     /*global initSelector*/
     /*eslint no-undef: "error"*/
     initSelector();

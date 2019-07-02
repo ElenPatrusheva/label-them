@@ -32,7 +32,7 @@ function initPresentationLayer(acceptMode) {
     initSvg();
     changeScrollingPositionInTheHistoryBlock();
     scrollHistoryTableBodyToBottom();
-
+    //TODO: don't use polygones here
     if (acceptMode) {
         let polygonsArray = JSON.parse(window.thisTask.getSolution().output_values.result);
 
