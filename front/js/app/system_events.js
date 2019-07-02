@@ -14,29 +14,29 @@ function onSave() {
     dc.getJSON();
 }
 
-/**
- * Event fired on close of polygon
- * @event onPolygonClosed
- * @fires onSave
- */
-function onPolygonClosed(data, calledByHistory = false) {
-    /*global DataEntity*/
-    /*eslint no-undef: "error"*/
-    let de = new DataEntity(data.polygonId);
-    dc.addEntity(de, data.polygonId);
+// /**
+//  * Event fired on close of polygon
+//  * @event onPolygonClosed
+//  * @fires onSave
+//  */
+// function onPolygonClosed(data, calledByHistory = false) {
+//     /*global DataEntity*/
+//     /*eslint no-undef: "error"*/
+//     let de = new DataEntity(data.polygonId);
+//     dc.addEntity(de, data.polygonId);
 
-    onSave();
+//     onSave();
 
-    if (calledByHistory === false) {
-        addHistoryRecordPolygon(HistoryRecordTypeEnum.ADD_OBJECT, data);
-    }
-}
+//     if (calledByHistory === false) {
+//         addHistoryRecordPolygon(HistoryRecordTypeEnum.ADD_OBJECT, data);
+//     }
+// }
 
-function onPolygonSelected(data, calledByHistory = false) {
-    dc.selectEntity(data.polygonId);
+function onZoneSelected(data, calledByHistory = false) {
+    dc.selectEntity(data.zoneId);
     setClassesAndParametersValues(dc.getActiveEntity());
 }
-
+/*
 function onPolygonDeleted(data, calledByHistory = false) {
     let parameters = dc.getEntitiesParameters(data.polygonId);
     dc.deleteEntity(data.polygonId);
@@ -48,7 +48,7 @@ function onPolygonDeleted(data, calledByHistory = false) {
         addHistoryRecordPolygon(HistoryRecordTypeEnum.DELETE_OBJECT, data, parameters);
     }
 }
-
+*/
 /**
  * Event fired on update of object's boolean parameter
  * @event onBoolParamUpdate
@@ -66,7 +66,7 @@ function onBoolParamUpdate(name, isChecked, calledByHistory = false) {
 
     if (calledByHistory === false) {
         addHistoryRecordParameter(HistoryRecordTypeEnum.MODIFY_BOOLEAN_PARAMETERS_VALUE,
-            dc.getActiveEntity().polygonId, name, isChecked, previousParameterValue);
+            dc.getActiveEntity().zoneId, name, isChecked, previousParameterValue);
     }
 }
 
@@ -83,24 +83,24 @@ function onObjectClassUpdate(value, calledByHistory = false) {
         dc.getActiveEntity().setParams({"class": value});
     }
 
-    polygons[dc.getActiveEntity().polygonId].onClassUpdate(value);
+    zones[dc.getActiveEntity().zoneId].onClassUpdate(value);
 
     onSave();
 
     if (calledByHistory === false) {
         addHistoryRecordClass(HistoryRecordTypeEnum.MODIFY_OBJECTS_CLASS,
-            dc.getActiveEntity().polygonId, value, previousClassValue);
+            dc.getActiveEntity().zoneId, value, previousClassValue);
     }
 
 
 }
-
+/*
 function onPolygonModified(polygon) {
     onSave();
 
     modifyPointsOfPolygonInHistoryRecords(polygon);
 }
-
+*/
 /**
  * Event fired on update of object's select parameter
  * @event onSelectParamUpdate
@@ -118,7 +118,7 @@ function onSelectParamUpdate(name, value, calledByHistory = false) {
 
     if (calledByHistory === false) {
         addHistoryRecordParameter(HistoryRecordTypeEnum.MODIFY_SELECT_PARAMETERS_VALUE,
-            dc.getActiveEntity().polygonId, name, value, previousParameterValue);
+            dc.getActiveEntity().zoneId, name, value, previousParameterValue);
     }
 }
 
@@ -139,7 +139,7 @@ function onStringParamUpdate(name, value, calledByHistory = false) {
 
     if (calledByHistory === false) {
         addHistoryRecordParameter(HistoryRecordTypeEnum.MODIFY_STRING_PARAMETERS_VALUE,
-            dc.getActiveEntity().polygonId, name, value, previousParameterValue);
+            dc.getActiveEntity().zoneId, name, value, previousParameterValue);
     }
 }
 

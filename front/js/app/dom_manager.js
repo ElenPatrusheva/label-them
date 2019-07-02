@@ -275,7 +275,7 @@ function initRowsAdditionAndDeletion() {
 
 let rowsCount = 0;
 
-function addHistoryRow(text = "Polygon",
+function addHistoryRow(text = "Zone",
                        icon = "https://rawgit.com/innosoft-pro/label-them/develop-toloka/front/img/polygon_tool_button.png") {
     let newRowsContents = [];
     newRowsContents.push("<td class=\"history-icon-td\">");

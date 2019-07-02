@@ -1,15 +1,17 @@
-import { threadId } from "worker_threads";
 
 //import { threadId } from "worker_threads";
 
 let zones = [];
 
-function InitZones(inputZones){
+function initZones(inputZones){
     /*
     *creates an array of given polygon zones,
     *which are not occupied by default
     */
-    for (zone in inputZones){
+    for (zone of inputZones){
+        
+        console.log("createzone");
+        console.log(zone);
         zones.push(new Zone(zone));
     };
 }
@@ -17,50 +19,44 @@ function InitZones(inputZones){
 function Path(points){
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.points = points;
-    this.state = "normal"
-    path = ""
-    for (pair in this.points){
+    this.isOccupied = false;
+    path = "";
+    for (pair of this.points){
         path += pair[0] + "," + pair[1] + " ";
     }
+    console.log(path);
     this.node.setAttribute("points", path);
     this.onclick = function(){
         console.log("default onclick path");
     }
-    this.updateColor = function (color) {
-        this.node.style.fill = color;
-    }
     this.invalidate = function(){
-        this.node.setAttribute("class", this.state);
+        this.node.setAttribute("class", this.isOccupied? "occupied":"normal");
+    }
+    this.onClick = function(event){
+        console.log("zone is selected, occupied status changed");
+        this.isOccupied = !this.isOccupied;
+        this.invalidate();
+    };
+    this.invalidate();
+    this.scale = function(scaleFactor){
+        let scaledPath = "";
+        for (pair of this.points){
+            scaledPath += (pair[0] * scaleFactor) + "," + (pair[1] * scaleFactor) + " ";
+        }
+        this.node.setAttribute("points", scaledPath);
     }
 }
 
 function Zone(zone, type="poly"){
-    this.isOccupied = False;
     this.zoneId = zone.id;
-    this.node = document.createElement("http://www.w3.org/2000/svg", "g");
+    this.node = document.createElementNS("http://www.w3.org/2000/svg", "g");
     this.path = new Path(zone.points);
     this.node.append(this.path.node);
     this.type = type;
     this.zoneScale = 1;
     this.pointsList = [];
-
-    this.onClick = function(){
-        console.log("zone # " + zone.id + " is selected, occupied status changed from " + 
-        this.isOccupied + " to " + !this.isOccupied);
-        this.isOccupied = !this.isOccupied;
-        //TODO change style
-    };
-    this.onMouseOver = function(){
-        //TODO change style
-    };
-    this.onMouseOut = function(){
-        //TODO change style
-    };
-    //TODO:maybe it is better to move this to the path, or even merge the path with the polygon 
+    svgImg.append(this.node);
     
-    this.path.node.addEventListener("click", this.onClick(), true);
-    this.path.node.addEventListener("mouseover", this.onMouseOver(), true);
-    this.path.node.addEventListener("mouseout", this.onMouseOut(), true);
 }
 
-//TODO make it scalable
+//TODO make it scalable, add helping messanges

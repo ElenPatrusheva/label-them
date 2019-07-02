@@ -1,6 +1,7 @@
 let btnSave;
 let btnHand;
 let btnPolygon;
+let btnSelector;
 let btnEdit;
 let btnZoomIn;
 let btnZoomOut;
@@ -36,8 +37,14 @@ function setOnClick(btn) {
             case Tool.hand().buttonId:
                 activeTool = Tool.hand();
                 break;
+            /*
             case Tool.polygon().buttonId:
                 activeTool = Tool.polygon();
+                break;
+            */
+
+            case Tool.selector().buttonId:
+                activeTool = Tool.selector();
                 break;
             case Tool.brightnessIncrease().buttonId:
                 activeTool = Tool.brightnessIncrease();
@@ -78,6 +85,7 @@ function setElementsOnClick() {
     setOnClick(btnSave);
     setOnClick(btnHand);
     setOnClick(btnPolygon);
+    setOnClick(btnSelector);
     setOnClick(btnEdit);
     setOnClick(btnZoomIn);
     setOnClick(btnZoomOut);
@@ -89,6 +97,7 @@ function getElements() {
     btnSave = document.getElementById(Tool.save().buttonId);
     btnHand = document.getElementById(Tool.hand().buttonId);
     btnPolygon = document.getElementById(Tool.polygon().buttonId);
+    btnSelector = document.getElementById(Tool.selector().buttonId);
     btnEdit = document.getElementById("btn_edit");          // TODO: Modify when edit tool implemented
     btnBrightnessHigh = document.getElementById(Tool.brightnessIncrease().buttonId);
     btnBrightnessLow = document.getElementById(Tool.brightnessDecrease().buttonId);
@@ -106,6 +115,9 @@ function initToolbar(acceptMode) {
     /*global initPolygon*/
     /*eslint no-undef: "error"*/
     initPolygon();
+    /*global initSelector*/
+    /*eslint no-undef: "error"*/
+    initSelector();
     /*global initBrightnessIncrease*/
     /*eslint no-undef: "error"*/
     initBrightnessIncrease();
@@ -126,19 +138,19 @@ function initToolbar(acceptMode) {
     if (acceptMode) {
         console.log("accept mode");
         makeVisibleOrHideAnElementById(btnHand.id, true); // make a hand tool visible
-        makeVisibleOrHideAnElementById(btnPolygon.id, false); // make a polygon tool hidden
+        makeVisibleOrHideAnElementById(btnSelector.id, false); // make a selector tool hidden
         enableOrDisableAnElementById(btnHand.id, true); // make a hand tool enabled
-        enableOrDisableAnElementById(btnPolygon.id, false); // make a polygon tool disabled
+        enableOrDisableAnElementById(btnSelector.id, false); // make a selector tool disabled
         changeButtonsSelectionState(btnHand);    // hand tool is selected by default
         activeTool = Tool.hand();
     } else {
         console.log("markup mode");
-        makeVisibleOrHideAnElementById(btnPolygon.id, true); // make a polygon tool visible
+        makeVisibleOrHideAnElementById(btnSelector.id, true); // make a selector tool visible
         makeVisibleOrHideAnElementById(btnHand.id, false); // make a hand tool hidden
-        enableOrDisableAnElementById(btnPolygon.id, true); // make a polygon tool enabled
+        enableOrDisableAnElementById(btnSelector.id, true); // make a selector tool enabled
         enableOrDisableAnElementById(btnHand.id, false); // make a hand tool disabled
-        changeButtonsSelectionState(btnPolygon); // polygon tool is selected by default
-        activeTool = Tool.polygon();
+        changeButtonsSelectionState(btnSelector); // selector tool is selected by default
+        activeTool = Tool.selector();
     }
 
     activeTool.onClick(true);
