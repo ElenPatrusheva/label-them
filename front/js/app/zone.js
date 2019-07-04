@@ -37,15 +37,12 @@ function Path(points){
     this.onClick = this.onClick.bind(this);
     this.setOnClick = function(bool){
         if (bool){
-            console.log(this);
             this.node.addEventListener("click", this.onClick, false);
         }
         else{
             console.log(this);
             this.node.removeEventListener("click", this.onClick, false);
         }
-        this.isOccupied = !this.isOccupied;
-        this.invalidate();
     };
     this.invalidate();
     this.scale = function(scaleFactor){
@@ -67,7 +64,6 @@ function Zone(zone, type="poly"){
     this.pointsList = [];
     svgImg.append(this.node);
     this.onClick = function(bool){
-        console.log("i am waiting");
         this.path.setOnClick(bool);
     };
 }
