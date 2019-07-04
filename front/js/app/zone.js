@@ -21,7 +21,6 @@ function Path(points, id){
     for (let pair of this.points){
         path += pair[0] + "," + pair[1] + " ";
     }
-    console.log(path);
     this.pathId = id;
     this.node.setAttribute("id", "polygon_" + id);
     this.node.setAttribute("points", path);

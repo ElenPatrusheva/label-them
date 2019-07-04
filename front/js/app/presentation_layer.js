@@ -30,8 +30,8 @@ function initPresentationLayer(acceptMode) {
 
 
     initSvg();
-    changeScrollingPositionInTheHistoryBlock();
-    scrollHistoryTableBodyToBottom();
+    //changeScrollingPositionInTheHistoryBlock();
+    //scrollHistoryTableBodyToBottom();
     //TODO: don't use polygones here
     if (acceptMode) {
         let polygonsArray = JSON.parse(window.thisTask.getSolution().output_values.result);
@@ -65,8 +65,8 @@ function resize() {
     /*global resizeSvg*/
     /*eslint no-undef: "error"*/
     resizeSvg(img);
-    changeScrollingPositionInTheHistoryBlock();
-    scrollHistoryTableBodyToBottom();
+    //changeScrollingPositionInTheHistoryBlock();
+    //scrollHistoryTableBodyToBottom();
     showMessageToTheUserDependingOnTheLatestNotificationFromCanvas();
     /*global redrawMinimapOnResize*/
     /*eslint no-undef: "error"*/
@@ -76,23 +76,6 @@ function resize() {
 function hideToolbar() {
     let toolbar = document.getElementsByClassName("btn-group-vertical")[0];
     toolbar.style.display = 'none';
-}
-
-function hideHistory() {
-    let history = document.getElementById("history-panel");
-    history.style.display = 'none';
-}
-
-function changeScrollingPositionInTheHistoryBlock() {
-    let historyTable = document.getElementsByClassName("history-table")[0];
-    let historyTableBody = document.getElementsByClassName("history-table-body")[0];
-    let width = historyTable.clientWidth;
-    historyTableBody.style.width = width + "px";
-}
-
-function scrollHistoryTableBodyToBottom() {
-    let historyTableBody = document.getElementsByClassName("history-table-body")[0];
-    historyTableBody.scrollTop = historyTableBody.scrollHeight;
 }
 
 function showMessageToTheUserDependingOnTheLatestNotificationFromCanvas() {

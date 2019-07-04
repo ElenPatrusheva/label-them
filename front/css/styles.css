@@ -13,32 +13,6 @@
     margin-left: 72px;
 }
 
-.history-table {
-    border: 0;
-    height: 200px;
-}
-
-.history-icon-td {
-    width: 48px;
-}
-
-.history-text-td {
-    vertical-align: middle;
-    text-align: left;
-    margin-left: 16px;
-}
-
-.history-table-body {
-    overflow-y: auto;
-    height: 200px;
-    position: absolute;
-}
-
-.history-table-row {
-    width: 100%;
-    display: inline-table;
-}
-
 /* Additional margin to add some space between input groups and drop down menus */
 .dropdown-menu-parameters {
     margin-top: 14px;
