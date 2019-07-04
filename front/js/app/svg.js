@@ -7,14 +7,16 @@ function initSvg() {
     /*global initCoordinates*/
     /*eslint no-undef: "error"*/
     initCoordinates(svgImg);
-    let input = JSON.parse('{"zones":[{"id":0, "points":[[30, 30],[150, 20],[300, 240],[200, 350] ]}, {"id":1, "points":[[370, 120],[600, 240],[700, 30] ]}]}');
-    console.log(input);
-    initZones(input.zones);
+    let jsonParams = document.getElementById("json_params").innerText;
+    //jsonParams = replaceAll(jsonParams, '\\', '"');
+    console.log(JSON.parse(jsonParams));
+    jsonParams = JSON.parse(jsonParams);
+    initZones(jsonParams.zones);
 }
 
 function svgScale(scaleFactor) {
     currentScale = currentScale * scaleFactor;
-    for (zone of zones) {
+    for (let zone of zones) {
         zone.path.scale(currentScale);
     }
 }

@@ -5,7 +5,7 @@ function initZones(inputZones){
     *creates an array of given polygon zones,
     *which are not occupied by default
     */
-    for (zone of inputZones){
+    for (let zone of inputZones){
         
         console.log("createzone");
         console.log(zone);
@@ -15,32 +15,46 @@ function initZones(inputZones){
 function Path(points){
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.points = points;
-    this.isOccupied = false;
-    path = "";
-    for (pair of this.points){
+    this.isOccupied = true;
+    this.clickListener = null
+    let path = "";
+    for (let pair of this.points){
         path += pair[0] + "," + pair[1] + " ";
     }
     console.log(path);
     this.node.setAttribute("points", path);
     this.onclick = function(){
         console.log("default onclick path");
-    }
+    };
     this.invalidate = function(){
         this.node.setAttribute("class", this.isOccupied? "occupied":"normal");
-    }
+    };
     this.onClick = function(event){
         console.log("zone is selected, occupied status changed");
+        this.isOccupied = !this.isOccupied;
+        this.invalidate();
+    };
+    this.onClick = this.onClick.bind(this);
+    this.setOnClick = function(bool){
+        if (bool){
+            console.log(this);
+            this.node.addEventListener("click", this.onClick, false);
+        }
+        else{
+            console.log(this);
+            this.node.removeEventListener("click", this.onClick, false);
+        }
         this.isOccupied = !this.isOccupied;
         this.invalidate();
     };
     this.invalidate();
     this.scale = function(scaleFactor){
         let scaledPath = "";
-        for (pair of this.points){
+        for (let pair of this.points){
             scaledPath += (pair[0] * scaleFactor) + "," + (pair[1] * scaleFactor) + " ";
         }
         this.node.setAttribute("points", scaledPath);
-    }
+    };
 }
 
 function Zone(zone, type="poly"){
@@ -52,6 +66,10 @@ function Zone(zone, type="poly"){
     this.zoneScale = 1;
     this.pointsList = [];
     svgImg.append(this.node);
+    this.onClick = function(bool){
+        console.log("i am waiting");
+        this.path.setOnClick(bool);
+    };
 }
 
 // add helping messanges

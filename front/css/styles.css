@@ -129,13 +129,13 @@ polygon {
     stroke-width: 3px;
 }
 polygon.occupied {
-    stroke: #330000;
-    fill: #330000;
+    stroke: #ff0000;
+    fill: #ff0000;
 }
 
 polygon.normal {
-    stroke: #003300;
-    fill: #003300;
+    stroke: #7cfc00;
+    fill: #7cfc00;
 }
 
 polygon:hover {

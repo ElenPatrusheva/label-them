@@ -1,151 +1,151 @@
 var selectDefaultParameters = [];
 
 // Generate HTML code for classes and parameters described in json/classesandparameters.json
-// Adds this HTML code to div with id="classes-and-parameters" in main.html
-function generateHTMLCodeForClassesAndParameters(dom, phrase, acceptMode = false) {
+// // Adds this HTML code to div with id="classes-and-parameters" in main.html
+// function generateHTMLCodeForClassesAndParameters(dom, phrase, acceptMode = false) {
 
-    // alert(phrase);
-    let jsonResponse = JSON.parse(phrase);
+//     // alert(phrase);
+//     let jsonResponse = JSON.parse(phrase);
 
-    let html = [];
+//     let html = [];
 
-    let classes = [];
-    let parameters = [];
+//     let classes = [];
+//     let parameters = [];
 
-    classes.push("<h4>");
-    classes.push("Objects Classes");
-    classes.push("</h4>");
-    parameters.push("<div class=\"dropdown dropdown-menu-parameters\">");
-    parameters.push("<select class=\"class-param form-control\" name=\"");
-    parameters.push("class");
-    parameters.push("\">");
-    // Additional margin to add some space between input groups and drop down menus
-    // Otherwise they stick to one another
-    parameters.push("<option disabled selected hidden>");
-    parameters.push("Select Class");
-    parameters.push("</option>");
-    jsonResponse.classes.forEach(function (obj) {
-        parameters.push("<option ");
-        parameters.push("value=\"");
-        parameters.push(obj);
-        parameters.push("\">");
-        parameters.push(obj);
-        parameters.push("</option>");
-    });
-    parameters.push("</select>");
-    parameters.push("</div>");
-    classes = classes.join("");
+//     classes.push("<h4>");
+//     classes.push("Objects Classes");
+//     classes.push("</h4>");
+//     parameters.push("<div class=\"dropdown dropdown-menu-parameters\">");
+//     parameters.push("<select class=\"class-param form-control\" name=\"");
+//     parameters.push("class");
+//     parameters.push("\">");
+//     // Additional margin to add some space between input groups and drop down menus
+//     // Otherwise they stick to one another
+//     parameters.push("<option disabled selected hidden>");
+//     parameters.push("Select Class");
+//     parameters.push("</option>");
+//     jsonResponse.classes.forEach(function (obj) {
+//         parameters.push("<option ");
+//         parameters.push("value=\"");
+//         parameters.push(obj);
+//         parameters.push("\">");
+//         parameters.push(obj);
+//         parameters.push("</option>");
+//     });
+//     parameters.push("</select>");
+//     parameters.push("</div>");
+//     classes = classes.join("");
 
-    if (jsonResponse.parameters !== undefined && jsonResponse.parameters !== null) {
-        let dropdownMenusCount = 0;
-        let inputGroupsCount = 0;
+//     if (jsonResponse.parameters !== undefined && jsonResponse.parameters !== null) {
+//         let dropdownMenusCount = 0;
+//         let inputGroupsCount = 0;
 
-        //To separate objects classes from parameters
-        parameters.push("</br>");
+//         //To separate objects classes from parameters
+//         parameters.push("</br>");
 
-        parameters.push("<h4>");
-        parameters.push("Objects Parameters");
-        parameters.push("</h4>");
+//         parameters.push("<h4>");
+//         parameters.push("Objects Parameters");
+//         parameters.push("</h4>");
 
-        parameters.push("<form>");
-        jsonResponse.parameters.forEach(function (obj) {
-            if (obj.type === "boolean") {
-                parameters.push("<div class=\"checkbox\">");
-                parameters.push("<label><input class=\"bool-param\" type=\"checkbox\" value=\"\" name=\"");
-                parameters.push(obj.name);
-                parameters.push("\">");
-                parameters.push(obj.name);
-                parameters.push("</label>");
-                parameters.push("</div>");
-            } else if (obj.type === "string") {
-                inputGroupsCount++;
-                parameters.push("<div class=\"input-group\">");
-                parameters.push("<span class=\"input-group-addon\" id=\"basic-addon");
-                parameters.push(inputGroupsCount);
-                parameters.push("\">");
-                parameters.push(obj.prefix);
-                parameters.push("</span>");
-                parameters.push("<input type=\"text\" class=\"form-control string-param\" placeholder=\"");
-                parameters.push(obj.name);
-                parameters.push("\" name=\"");
-                parameters.push(obj.name);
-                parameters.push("\" aria-describedby=\"basic-addon");
-                parameters.push(inputGroupsCount);
-                parameters.push("\">");
-                parameters.push("</div>");
-            } else if (obj.type === "select") {
-                dropdownMenusCount++;
-                parameters.push("<div class=\"dropdown dropdown-menu-parameters\">");
-                parameters.push("<select class=\"select-param form-control\" name=\"");
-                parameters.push(obj.name);
-                parameters.push("\">");
-                // Additional margin to add some space between input groups and drop down menus
-                // Otherwise they stick to one another
-                parameters.push("<option disabled selected hidden>");
-                parameters.push(obj.name);
-                selectDefaultParameters.push(obj.name);
-                parameters.push("</option>");
-                obj.options.forEach(function (obj2) {
-                    parameters.push("<option ");
-                    parameters.push("value=\"");
-                    parameters.push(obj2);
-                    parameters.push("\">");
-                    parameters.push(obj2);
-                    parameters.push("</option>");
-                });
-                parameters.push("</select>");
-                parameters.push("</div>");
-            }
-        });
-        parameters.push("</form>");
-    }
-    parameters = parameters.join("");
+//         parameters.push("<form>");
+//         jsonResponse.parameters.forEach(function (obj) {
+//             if (obj.type === "boolean") {
+//                 parameters.push("<div class=\"checkbox\">");
+//                 parameters.push("<label><input class=\"bool-param\" type=\"checkbox\" value=\"\" name=\"");
+//                 parameters.push(obj.name);
+//                 parameters.push("\">");
+//                 parameters.push(obj.name);
+//                 parameters.push("</label>");
+//                 parameters.push("</div>");
+//             } else if (obj.type === "string") {
+//                 inputGroupsCount++;
+//                 parameters.push("<div class=\"input-group\">");
+//                 parameters.push("<span class=\"input-group-addon\" id=\"basic-addon");
+//                 parameters.push(inputGroupsCount);
+//                 parameters.push("\">");
+//                 parameters.push(obj.prefix);
+//                 parameters.push("</span>");
+//                 parameters.push("<input type=\"text\" class=\"form-control string-param\" placeholder=\"");
+//                 parameters.push(obj.name);
+//                 parameters.push("\" name=\"");
+//                 parameters.push(obj.name);
+//                 parameters.push("\" aria-describedby=\"basic-addon");
+//                 parameters.push(inputGroupsCount);
+//                 parameters.push("\">");
+//                 parameters.push("</div>");
+//             } else if (obj.type === "select") {
+//                 dropdownMenusCount++;
+//                 parameters.push("<div class=\"dropdown dropdown-menu-parameters\">");
+//                 parameters.push("<select class=\"select-param form-control\" name=\"");
+//                 parameters.push(obj.name);
+//                 parameters.push("\">");
+//                 // Additional margin to add some space between input groups and drop down menus
+//                 // Otherwise they stick to one another
+//                 parameters.push("<option disabled selected hidden>");
+//                 parameters.push(obj.name);
+//                 selectDefaultParameters.push(obj.name);
+//                 parameters.push("</option>");
+//                 obj.options.forEach(function (obj2) {
+//                     parameters.push("<option ");
+//                     parameters.push("value=\"");
+//                     parameters.push(obj2);
+//                     parameters.push("\">");
+//                     parameters.push(obj2);
+//                     parameters.push("</option>");
+//                 });
+//                 parameters.push("</select>");
+//                 parameters.push("</div>");
+//             }
+//         });
+//         parameters.push("</form>");
+//     }
+//     parameters = parameters.join("");
 
-    html.push(classes);
-    html.push(parameters);
+//     html.push(classes);
+//     html.push(parameters);
 
-    html = html.join("");
+//     html = html.join("");
 
-    dom.getElementById("classes-and-parameters").innerHTML += html;
+//     dom.getElementById("classes-and-parameters").innerHTML += html;
 
-    if (!acceptMode) {
-        /*global onObjectClassUpdate*/
-        /*eslint no-undef: "error"*/
-        let classParams = document.getElementsByClassName("class-param");
-        Array.prototype.forEach.call(classParams, param => {
-            param.addEventListener("change", function () {
-                onObjectClassUpdate(param.value);
-            }, false);
-        });
+//     if (!acceptMode) {
+//         /*global onObjectClassUpdate*/
+//         /*eslint no-undef: "error"*/
+//         let classParams = document.getElementsByClassName("class-param");
+//         Array.prototype.forEach.call(classParams, param => {
+//             param.addEventListener("change", function () {
+//                 onObjectClassUpdate(param.value);
+//             }, false);
+//         });
 
-        /*global onBoolParamUpdate*/
-        /*eslint no-undef: "error"*/
-        let boolParams = document.getElementsByClassName("bool-param");
-        Array.prototype.forEach.call(boolParams, param => {
-            param.addEventListener("click", function () {
-                onBoolParamUpdate(param.name, param.checked);
-            }, false);
-        });
+//         /*global onBoolParamUpdate*/
+//         /*eslint no-undef: "error"*/
+//         let boolParams = document.getElementsByClassName("bool-param");
+//         Array.prototype.forEach.call(boolParams, param => {
+//             param.addEventListener("click", function () {
+//                 onBoolParamUpdate(param.name, param.checked);
+//             }, false);
+//         });
 
-        /*global onStringParamUpdate*/
-        /*eslint no-undef: "error"*/
-        let stringParams = document.getElementsByClassName("string-param");
-        Array.prototype.forEach.call(stringParams, param => {
-            param.addEventListener("change", function () {
-                onStringParamUpdate(param.placeholder, param.value);
-            }, false);
-        });
+//         /*global onStringParamUpdate*/
+//         /*eslint no-undef: "error"*/
+//         let stringParams = document.getElementsByClassName("string-param");
+//         Array.prototype.forEach.call(stringParams, param => {
+//             param.addEventListener("change", function () {
+//                 onStringParamUpdate(param.placeholder, param.value);
+//             }, false);
+//         });
 
-        /*global onSelectParamUpdate*/
-        /*eslint no-undef: "error"*/
-        let selectParams = document.getElementsByClassName("select-param");
-        Array.prototype.forEach.call(selectParams, param => {
-            param.addEventListener("change", function () {
-                onSelectParamUpdate(param.name, param.value);
-            }, false);
-        });
-    }
-}
+//         /*global onSelectParamUpdate*/
+//         /*eslint no-undef: "error"*/
+//         let selectParams = document.getElementsByClassName("select-param");
+//         Array.prototype.forEach.call(selectParams, param => {
+//             param.addEventListener("change", function () {
+//                 onSelectParamUpdate(param.name, param.value);
+//             }, false);
+//         });
+//     }
+// }
 
 /**
  *  Reset all values of class selector and parameters to default values
@@ -244,10 +244,10 @@ function initDOM(acceptMode) {
     // otherwise JSON.parse will fail. Need to clarify this with Y.T. manager,
     // but until then this does the job
 
-    jsonParams = replaceAll(jsonParams, '\\', '"');
-    generateHTMLCodeForClassesAndParameters(document, jsonParams, acceptMode);
-    initRowsAdditionAndDeletion();
-    initColorScheme(jsonParams);
+    //jsonParams = replaceAll(jsonParams, '\\', '"');
+    //generateHTMLCodeForClassesAndParameters(document, jsonParams, acceptMode);
+    //initRowsAdditionAndDeletion();
+    //initColorScheme(jsonParams);
 }
 
 function resetDOM() {

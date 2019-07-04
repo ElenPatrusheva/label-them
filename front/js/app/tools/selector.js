@@ -35,15 +35,20 @@ function initSelector() {
                 if (typeof isButtonPressed === "boolean" || isButtonPressed instanceof Boolean) {
                     if (isButtonPressed) {
                         console.log("slector enabled");
-                        for (zone of zones){
-                            zone.path.node.addEventListener("click", zone.path.onClick.bind(zone.path), false);
+                        for (let key in zones){
+                            //zones[key].path.node.addEventListener("click", zones[key].path.onClick.bind(zones[key].path), false);
+                            zones[key].onClick(true);
                         }
+                        console.log(zones);
 
                     } else {
                         console.log("selector disabled");
-                        for (zone of zones) {
-                            zone.path.node.removeEventListener("click", zone.path.onClick.bind(zone.path), false);
+                        for (let key in zones) {
+                            zones[key].onClick(false);
+                            //zones[key].path.node.removeEventListener("click", zones[key].path.onClick.bind(zones[key].path), false);
                         }
+                        console.log(zones);
+                        
                     }
                 }
             },

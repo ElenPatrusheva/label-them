@@ -27,3 +27,7 @@ errorShots/
 
 # gecko driver
 geckodriver
+
+front/main_to_test.html
+package-lock.json
+

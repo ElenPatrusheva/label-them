@@ -24,7 +24,7 @@ exports.Task = extend(TolokaHandlebarsTask, function (options) {
         resetDataCollector();
         /*global resetSVGPolygonData*/
         /*eslint no-undef: "error"*/
-        resetSVGPolygonData();
+        //resetSVGPolygonData();
     }
 });
 
