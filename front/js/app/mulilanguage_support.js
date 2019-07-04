@@ -27,6 +27,6 @@ function initMultiLanguageSupport() {
 function selectLanguage(selectedLanguage) {
     activeLanguage = selectedLanguage;
     translateBlocksTitles();
-    recreateHistoryBlockContents();
+    //recreateHistoryBlockContents();
     showMessageToTheUserDependingOnTheLatestNotificationFromCanvas();
 }

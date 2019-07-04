@@ -19,12 +19,8 @@ class DataEntityToBeExported {
     constructor(entity) {
         /*global polygonId, polygons*/
         /*eslint no-undef: "error"*/
-        this.points = polygons[entity.polygonId].unscaledPoints();
-        this.parameters = entity.parameters;
-    }
-
-    toString() {
-        return JSON.stringify(this);
+        this.id = entity.pathId;
+        this.status = entity.isOccupied? 1: 0;//1 if there are cars, 0 if there is no car 
     }
 }
 
@@ -130,19 +126,13 @@ DataEntity.prototype.deleteParameterByName = function (parameterName) {
  */
 DataCollector.prototype.getJSON = function () {
     let dataEntities = [];
-    /*global polygonId*/
-    /*eslint no-undef: "error"*/
-    for (let i = 0; i < polygonId; i++) {
-        if (this.dataEntities.hasOwnProperty(i)) { // check if data entity with id=i wasn't deleted (exists)
-            dataEntities.push(new DataEntityToBeExported(this.dataEntities[i]));
-        }
+    for (let i in zones){
+        dataEntities[i] = (new DataEntityToBeExported(zones[i].path));
     }
-    outputJson = JSON.stringify(dataEntities);
+    let outputJson = JSON.stringify(dataEntities);
     if (window.thisTask !== undefined && window.thisTask !== null) {
         window.thisTask.setSolutionOutputValue("result", outputJson);
     } else {
         console.log(outputJson); // To check output values on localhost
     }
-
-    return outputJson;
 };

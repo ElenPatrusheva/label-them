@@ -12,16 +12,18 @@ function initZones(inputZones){
         zones.push(new Zone(zone));
     };
 }
-function Path(points){
+function Path(points, id){
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.points = points;
-    this.isOccupied = true;
-    this.clickListener = null
+    this.isOccupied = false;
+    this.clickListener = null;
     let path = "";
     for (let pair of this.points){
         path += pair[0] + "," + pair[1] + " ";
     }
     console.log(path);
+    this.pathId = id;
+    this.node.setAttribute("id", "polygon_" + id);
     this.node.setAttribute("points", path);
     this.onclick = function(){
         console.log("default onclick path");
@@ -55,9 +57,8 @@ function Path(points){
 }
 
 function Zone(zone, type="poly"){
-    this.zoneId = zone.id;
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    this.path = new Path(zone.points);
+    this.path = new Path(zone.points, zone.id);
     this.node.append(this.path.node);
     this.type = type;
     this.zoneScale = 1;
