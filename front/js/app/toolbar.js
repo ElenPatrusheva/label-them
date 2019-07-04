@@ -1,4 +1,3 @@
-let btnSave;
 let btnHand;
 let btnSelector;
 let btnEdit;
@@ -30,9 +29,6 @@ function setOnClick(btn) {
         switch (btn.id) {
             /*global Tool*/
             /*eslint no-undef: "error"*/
-            case Tool.save().buttonId:
-                activeTool = Tool.save();
-                break;
             case Tool.hand().buttonId:
                 activeTool = Tool.hand();
                 break;
@@ -75,7 +71,6 @@ function setOnClick(btn) {
 }
 
 function setElementsOnClick() {
-    setOnClick(btnSave);
     setOnClick(btnHand);
     setOnClick(btnSelector);
     setOnClick(btnEdit);
@@ -86,7 +81,6 @@ function setElementsOnClick() {
 }
 
 function getElements() {
-    btnSave = document.getElementById(Tool.save().buttonId);
     btnHand = document.getElementById(Tool.hand().buttonId);
     btnSelector = document.getElementById(Tool.selector().buttonId);
     btnEdit = document.getElementById("btn_edit");          // TODO: Modify when edit tool implemented
@@ -97,9 +91,6 @@ function getElements() {
 }
 
 function initToolbar(acceptMode) {
-    /*global initSave*/
-    /*eslint no-undef: "error"*/
-    initSave();
     /*global initHand*/
     /*eslint no-undef: "error"*/
     initHand();

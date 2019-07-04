@@ -8,7 +8,7 @@ function initSvg() {
     /*eslint no-undef: "error"*/
     initCoordinates(svgImg);
     let jsonParams = document.getElementById("json_params").innerText;
-    //jsonParams = replaceAll(jsonParams, '\\', '"');
+    jsonParams = replaceAll(jsonParams, '\\', '"');
     console.log(JSON.parse(jsonParams));
     jsonParams = JSON.parse(jsonParams);
     initZones(jsonParams.zones);

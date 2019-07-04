@@ -35,6 +35,7 @@ function Path(points, id){
         console.log("zone is selected, occupied status changed");
         this.isOccupied = !this.isOccupied;
         this.invalidate();
+        onSave();
     };
     this.onClick = this.onClick.bind(this);
     this.setOnClick = function(bool){

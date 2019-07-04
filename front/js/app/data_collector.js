@@ -135,4 +135,5 @@ DataCollector.prototype.getJSON = function () {
     } else {
         console.log(outputJson); // To check output values on localhost
     }
+    return outputJson;
 };
