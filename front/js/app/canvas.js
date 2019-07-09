@@ -12,7 +12,6 @@ function drawImg(img) {
  * returns "Not the full image will be shown" string if canvas.width < img.width
  **/
 function resizeCanvas(img) {
-    console.log("warning, resize");
     let output = null;
 
     let canvas = document.getElementById("main-canvas");

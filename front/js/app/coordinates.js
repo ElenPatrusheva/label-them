@@ -1,4 +1,3 @@
-//TODO: find out why is not called
 function initCoordinates(svg) {
     /*global onSave*/
     /*eslint no-undef: "error"*/
