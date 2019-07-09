@@ -12,6 +12,7 @@ function drawImg(img) {
  * returns "Not the full image will be shown" string if canvas.width < img.width
  **/
 function resizeCanvas(img) {
+    console.log("warning, resize");
     let output = null;
 
     let canvas = document.getElementById("main-canvas");
@@ -36,7 +37,8 @@ function resizeCanvas(img) {
     // modify both canvas style and canvas dimension
     canvas.width = width;
     canvas.height = height;
-
+    resizeZones();
+    //if (resizeZones === "function"){resizeZones()};
     drawImg(img);
 
     if (output !== null) { // Notify the user that not the full image will be shown

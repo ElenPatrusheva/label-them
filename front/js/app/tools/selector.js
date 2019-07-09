@@ -3,28 +3,6 @@
  */
 function initSelector() {
     
-    // function handleClicksOnZoneWithSelectorTool(event, zone) {
-    //     zoneOnClick(event, zone);
-    // }
-    // function handleClicksOnSvgWithSelectorTool(event) {
-    //     svgImgOnClick(event);
-    // }
-
-    // function handleKeydown(event) {
-    //     if ((event.ctrlKey || event.metaKey) && event.keyCode === 90) {
-    //         if (event.shiftKey) {
-    //             redoLastPoint();
-    //         } else {
-    //             undoLastPoint();
-    //         }
-    //     }
-    // }
-
-    // function handleContextMenu(event, zone) {
-    //     // console.log(event);
-    //     event.returnValue = false;
-    //     zoneCancelSelector();
-    // }
     /*global Tool*/
     /*eslint no-undef: "error"*/
     Tool.selector = function () {
@@ -37,8 +15,9 @@ function initSelector() {
                         console.log("slector enabled");
                         for (let key in zones){
                             //zones[key].path.node.addEventListener("click", zones[key].path.onClick.bind(zones[key].path), false);
-                            zones[key].onClick(true);
+                            zones[key].onClick(true);                            
                         }
+                        btnSelector.setAttribute("title", activeLanguage.disableEditing);
                         console.log(zones);
 
                     } else {
@@ -47,6 +26,7 @@ function initSelector() {
                             zones[key].onClick(false);
                             //zones[key].path.node.removeEventListener("click", zones[key].path.onClick.bind(zones[key].path), false);
                         }
+                        btnSelector.setAttribute("title", activeLanguage.enableEditing);
                         console.log(zones);
                         
                     }

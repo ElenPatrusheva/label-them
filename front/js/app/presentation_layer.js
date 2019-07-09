@@ -64,7 +64,10 @@ function resize() {
     latestNotificationFromCanvas = resizeCanvas(img);
     /*global resizeSvg*/
     /*eslint no-undef: "error"*/
+    currentScale = 1;
+    zoomCount = 0;
     resizeSvg(img);
+
     //changeScrollingPositionInTheHistoryBlock();
     //scrollHistoryTableBodyToBottom();
     showMessageToTheUserDependingOnTheLatestNotificationFromCanvas();

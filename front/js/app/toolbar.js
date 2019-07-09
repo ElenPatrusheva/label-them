@@ -97,13 +97,10 @@ function initToolbar(acceptMode) {
     /*global initSelector*/
     /*eslint no-undef: "error"*/
     initSelector();
-    /*global initBrightnessIncrease*/
+    /*global initBrightnessIncrease, initBrightnessDecrease*/
     /*eslint no-undef: "error"*/
     initBrightnessIncrease();
-    /*global initBrightnessDecrease*/
-    /*eslint no-undef: "error"*/
     initBrightnessDecrease();
-
     /*global initZoomIn, initZoomOut*/
     /*eslint no-undef: "error"*/
     initZoomIn();

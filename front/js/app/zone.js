@@ -12,6 +12,7 @@ function initZones(inputZones){
         zones.push(new Zone(zone));
     };
 }
+
 function Path(points, id){
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.points = points;
@@ -67,6 +68,12 @@ function Zone(zone, type="poly"){
     this.onClick = function(bool){
         this.path.setOnClick(bool);
     };
+}
+
+function resizeZones(){
+    for (zone of zones){
+        zone.path.scale(1);
+    }
 }
 
 // add helping messanges

@@ -146,7 +146,7 @@ var selectDefaultParameters = [];
 //         });
 //     }
 // }
-
+//TODO: accept mode
 /**
  *  Reset all values of class selector and parameters to default values
  */
@@ -239,15 +239,6 @@ function replaceAll(str, find, replace) {
 
 function initDOM(acceptMode) {
     let jsonParams = document.getElementById("json_params").innerText;
-    // Toloka strips all strings of double quotes for reasons unknown so in order
-    // to get JSON.parse to work we need to replace all occurence of \ with "
-    // otherwise JSON.parse will fail. Need to clarify this with Y.T. manager,
-    // but until then this does the job
-
-    //jsonParams = replaceAll(jsonParams, '\\', '"');
-    //generateHTMLCodeForClassesAndParameters(document, jsonParams, acceptMode);
-    //initRowsAdditionAndDeletion();
-    //initColorScheme(jsonParams);
 }
 
 function resetDOM() {
@@ -374,9 +365,6 @@ function makeVisibleOrHideAnElementById(buttonId, toMakeVisible = true) {
 function translateBlocksTitles() {
     let beginH3tag = "<h3 class=\"panel-title\">";
     let endH3tag = "</h3>";
-    document.getElementById("label-parameters-block-title").innerHTML = beginH3tag + activeLanguage.labelParameters +
-        endH3tag;
-    //document.getElementById("history-block-title").innerHTML = beginH3tag + activeLanguage.history + endH3tag;
     document.getElementById("minimap-block-title").innerHTML = beginH3tag + activeLanguage.miniMap + endH3tag;
 }
 

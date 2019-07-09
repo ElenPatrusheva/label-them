@@ -31,7 +31,9 @@ function initRussianLanguageSupport() {
             "инструментов расположенных в блоке слева.",
             characterizeObjectInTheRightMenu: "Пожалуйста, охарактеризуйте выбранный объект в правом верхнем блоке.",
             labelParameters: "Параметры объекта",
-            miniMap: "Мини карта"
+            miniMap: "Мини карта",
+            disableEditing: "Отключить редактирование", 
+            enableEditing: "Разрешить редактирование"
         });
     };
 }

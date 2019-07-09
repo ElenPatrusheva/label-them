@@ -31,7 +31,9 @@ function initEnglishLanguageSupport() {
             "from the block on the left.",
             characterizeObjectInTheRightMenu: "Please, characterize the selected object in the right menu.",
             labelParameters: "Label Parameters",
-            miniMap: "Mini Map"
+            miniMap: "Mini Map", 
+            disableEditing: "Disable editing", 
+            enableEditing: "Enable editing"
         });
     };
 }
