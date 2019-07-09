@@ -18,17 +18,13 @@ function initSelector() {
                             zones[key].onClick(true);                            
                         }
                         btnSelector.setAttribute("title", activeLanguage.disableEditing);
-                        console.log(zones);
-
                     } else {
                         console.log("selector disabled");
                         for (let key in zones) {
                             zones[key].onClick(false);
                             //zones[key].path.node.removeEventListener("click", zones[key].path.onClick.bind(zones[key].path), false);
                         }
-                        btnSelector.setAttribute("title", activeLanguage.enableEditing);
-                        console.log(zones);
-                        
+                        btnSelector.setAttribute("title", activeLanguage.enableEditing);                        
                     }
                 }
             },

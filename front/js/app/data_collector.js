@@ -133,7 +133,7 @@ DataCollector.prototype.getJSON = function () {
     if (window.thisTask !== undefined && window.thisTask !== null) {
         window.thisTask.setSolutionOutputValue("result", outputJson);
     } else {
-        console.log(outputJson); // To check output values on localhost
+        //console.log(outputJson); // To check output values on localhost
     }
     return outputJson;
 };

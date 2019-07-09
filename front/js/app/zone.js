@@ -6,9 +6,6 @@ function initZones(inputZones){
     *which are not occupied by default
     */
     for (let zone of inputZones){
-        
-        console.log("createzone");
-        console.log(zone);
         zones.push(new Zone(zone));
     };
 }
@@ -25,14 +22,10 @@ function Path(points, id){
     this.pathId = id;
     this.node.setAttribute("id", "polygon_" + id);
     this.node.setAttribute("points", path);
-    this.onclick = function(){
-        console.log("default onclick path");
-    };
     this.invalidate = function(){
         this.node.setAttribute("class", this.isOccupied? "occupied":"normal");
     };
     this.onClick = function(event){
-        console.log("zone is selected, occupied status changed");
         this.isOccupied = !this.isOccupied;
         this.invalidate();
         onSave();
@@ -43,7 +36,6 @@ function Path(points, id){
             this.node.addEventListener("click", this.onClick, false);
         }
         else{
-            console.log(this);
             this.node.removeEventListener("click", this.onClick, false);
         }
     };
