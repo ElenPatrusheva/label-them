@@ -47,12 +47,6 @@ function initPresentationLayer(acceptMode) {
             }            
         }
     }
-
-
-    // if (acceptMode) {
-    //     hideToolbar();
-    //     hideHistory();
-    // }
 }
 
 /*
@@ -75,11 +69,6 @@ function resize() {
     /*global redrawMinimapOnResize*/
     /*eslint no-undef: "error"*/
     redrawMinimapOnResize();
-}
-
-function hideToolbar() {
-    let toolbar = document.getElementsByClassName("btn-group-vertical")[0];
-    toolbar.style.display = 'none';
 }
 
 function showMessageToTheUserDependingOnTheLatestNotificationFromCanvas() {

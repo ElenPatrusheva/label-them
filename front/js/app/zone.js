@@ -68,5 +68,3 @@ function resizeZones(){
         zone.path.scale(1);
     }
 }
-
-// add helping messanges

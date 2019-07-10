@@ -20,7 +20,7 @@ class DataEntityToBeExported {
         /*global polygonId, polygons*/
         /*eslint no-undef: "error"*/
         this.id = entity.pathId;
-        this.status = entity.isOccupied;//1 if there are cars, 0 if there is no car 
+        this.status = entity.isOccupied;
     }
 }
 

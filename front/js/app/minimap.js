@@ -1,8 +1,3 @@
-/**
- * @typedef {object} MouseEvent
- * @typedef {object} HTMLElement
- */
-
 let width;
 let height;
 let mouseUp = true;
@@ -11,8 +6,7 @@ let canvasParent;
 let ctx;
 let minimapCanvas;
 let mainCanvasBlock;
-// let minimapPolygones = [];
-// let svgMinimap;
+
 /**
  * Draw a rect on the minimap representing visible area of the main canvas.
  * @event drawFOV
@@ -143,9 +137,7 @@ function initMinimap() {
     canvasParent[0].addEventListener("onload", function () {
         drawFOV(0, 0);
     });
-    //initMinimapPolygones();
 }
-
 /**
  * Redraw a rect on the minimap on window resize based on new values of the scroll
  * @fires onScroll
@@ -161,39 +153,3 @@ function redrawMinimapOnResize() {
     ctx.strokeStyle = "red";
     onScroll();
 }
-/*
-function initMinimapPolygones(){
-    svgMinimap = document.getElementById("svg_minimap");
-    console.log("init minimap poly");
-    for (zone of zones){
-        a = new MinimapPolygon(zone.path);
-        console.log(a);
-        minimapPolygones.push(a);
-    }
-}
-
-function MinimapPolygon(path){
-    this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    this.points = path.points;
-    this.scale = function(scaleFactor){
-        let scaledPath = "";
-        for (let pair of this.points){
-            scaledPath += (pair[0] * scaleFactor) + "," + (pair[1] * scaleFactor) + " ";
-        }
-        this.node.setAttribute("points", scaledPath);
-    };
-    this.rescale = function(){
-        newScale = minimap.width / this.svgImgWidth;
-        this.scale(newScale);
-    };
-    this.svgImgWidth = document.getElementById('main-canvas').width;
-    this.rescale();
-    svgMinimap.append(this.node);
-}
-
-function resizeMinimapPolygones(){
-    for (p of minimapPolygones){
-        p.rescale();
-    }
-}
-*/
