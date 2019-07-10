@@ -32,18 +32,19 @@ function initPresentationLayer(acceptMode) {
     initSvg();
     //changeScrollingPositionInTheHistoryBlock();
     //scrollHistoryTableBodyToBottom();
-    //TODO: don't use polygones here
+    //TODO: change while using toloka 
     if (acceptMode) {
-        let polygonsArray = JSON.parse(window.thisTask.getSolution().output_values.result);
-
-        for (let polygonObjectId in polygonsArray) {
-            let polygonObject = polygonsArray[polygonObjectId];
-            let polygon = addPolygonFromObject(polygonObject);
-
-            let de = new DataEntity(polygon.polygonId);
-            de.parameters = polygonObject["parameters"];
-            polygons[polygon.polygonId] = polygon;
-            dc.addEntity(de, polygon.polygonId);
+        //let zonesArray = JSON.parse(window.thisTask.getSolution().output_values.result);
+        let zonesArray = JSON.parse('[{"id":0, "status": false}, {"id":1, "status": true}]')
+        for (zone of zones) {
+            for (zoneData of zonesArray){
+                if (zoneData.id == zone.path.pathId){
+                    console.log('fire');
+                    if (zoneData.status){
+                        zone.path.onClick();
+                    }
+                }
+            }            
         }
     }
 

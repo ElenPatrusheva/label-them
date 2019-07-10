@@ -20,7 +20,7 @@ class DataEntityToBeExported {
         /*global polygonId, polygons*/
         /*eslint no-undef: "error"*/
         this.id = entity.pathId;
-        this.status = entity.isOccupied? 1: 0;//1 if there are cars, 0 if there is no car 
+        this.status = entity.isOccupied;//1 if there are cars, 0 if there is no car 
     }
 }
 
@@ -133,7 +133,7 @@ DataCollector.prototype.getJSON = function () {
     if (window.thisTask !== undefined && window.thisTask !== null) {
         window.thisTask.setSolutionOutputValue("result", outputJson);
     } else {
-        //console.log(outputJson); // To check output values on localhost
+        console.log(outputJson); // To check output values on localhost
     }
     return outputJson;
 };

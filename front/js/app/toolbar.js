@@ -1,4 +1,3 @@
-let btnHand;
 let btnSelector;
 let btnEdit;
 let btnZoomIn;
@@ -29,9 +28,6 @@ function setOnClick(btn) {
         switch (btn.id) {
             /*global Tool*/
             /*eslint no-undef: "error"*/
-            case Tool.hand().buttonId:
-                activeTool = Tool.hand();
-                break;
             case Tool.selector().buttonId:
                 activeTool = Tool.selector();
                 break;
@@ -71,7 +67,6 @@ function setOnClick(btn) {
 }
 
 function setElementsOnClick() {
-    setOnClick(btnHand);
     setOnClick(btnSelector);
     setOnClick(btnEdit);
     setOnClick(btnZoomIn);
@@ -81,7 +76,6 @@ function setElementsOnClick() {
 }
 
 function getElements() {
-    btnHand = document.getElementById(Tool.hand().buttonId);
     btnSelector = document.getElementById(Tool.selector().buttonId);
     btnEdit = document.getElementById("btn_edit");          // TODO: Modify when edit tool implemented
     btnBrightnessHigh = document.getElementById(Tool.brightnessIncrease().buttonId);
@@ -91,9 +85,6 @@ function getElements() {
 }
 
 function initToolbar(acceptMode) {
-    /*global initHand*/
-    /*eslint no-undef: "error"*/
-    initHand();
     /*global initSelector*/
     /*eslint no-undef: "error"*/
     initSelector();
@@ -113,21 +104,14 @@ function initToolbar(acceptMode) {
     initBrightness();
     if (acceptMode) {
         console.log("accept mode");
-        makeVisibleOrHideAnElementById(btnHand.id, true); // make a hand tool visible
         makeVisibleOrHideAnElementById(btnSelector.id, false); // make a selector tool hidden
-        enableOrDisableAnElementById(btnHand.id, true); // make a hand tool enabled
         enableOrDisableAnElementById(btnSelector.id, false); // make a selector tool disabled
-        changeButtonsSelectionState(btnHand);    // hand tool is selected by default
-        activeTool = Tool.hand();
     } else {
         console.log("markup mode");
         makeVisibleOrHideAnElementById(btnSelector.id, true); // make a selector tool visible
-        makeVisibleOrHideAnElementById(btnHand.id, false); // make a hand tool hidden
         enableOrDisableAnElementById(btnSelector.id, true); // make a selector tool enabled
-        enableOrDisableAnElementById(btnHand.id, false); // make a hand tool disabled
         changeButtonsSelectionState(btnSelector); // selector tool is selected by default
         activeTool = Tool.selector();
+        activeTool.onClick(true);
     }
-
-    activeTool.onClick(true);
 }

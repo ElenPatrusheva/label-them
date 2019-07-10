@@ -237,8 +237,12 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-function initDOM(acceptMode) {
+function initDOM() {
     let jsonParams = document.getElementById("json_params").innerText;
+    // Toloka strips all strings of double quotes for reasons unknown so in order
+    // to get JSON.parse to work we need to replace all occurence of \ with "
+    // otherwise JSON.parse will fail. Need to clarify this with Y.T. manager,
+    // but until then this does the job
 }
 
 function resetDOM() {

@@ -8,12 +8,13 @@ function initZones(inputZones){
     for (let zone of inputZones){
         zones.push(new Zone(zone));
     };
+    onSave();
 }
 
-function Path(points, id){
+function Path(points, id, isOccupied=false){
     this.node = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     this.points = points;
-    this.isOccupied = false;
+    this.isOccupied = isOccupied;
     this.clickListener = null;
     let path = "";
     for (let pair of this.points){

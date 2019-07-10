@@ -6,7 +6,6 @@ function initSvg() {
     svgImg = document.getElementById("svg_img");
     /*global initCoordinates*/
     /*eslint no-undef: "error"*/
-    initCoordinates(svgImg);
     let jsonParams = document.getElementById("json_params").innerText;
     jsonParams = replaceAll(jsonParams, '\\', '"');
     jsonParams = JSON.parse(jsonParams);
