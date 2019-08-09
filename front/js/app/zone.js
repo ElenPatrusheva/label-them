@@ -64,7 +64,7 @@ function Zone(zone, type="poly"){
 }
 
 function resizeZones(){
-    for (zone of zones){
+    for (let zone of zones){
         zone.path.scale(1);
     }
 }

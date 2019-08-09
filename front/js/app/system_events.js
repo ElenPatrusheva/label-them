@@ -10,7 +10,9 @@ let dc = new DataCollector();
  * @event onSave
  */
 function onSave() {
-    dc.getJSON();
+    if (!globalAcceptMode){
+        dc.getJSON();
+    }
 }
 
 /**
@@ -29,4 +31,8 @@ function onZoom() {
  */
 function resetDataCollector() {
     dc = new DataCollector();
+}
+
+function resetSVGPolygonData() {
+    zones = [];
 }

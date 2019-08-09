@@ -34,12 +34,14 @@ function initPresentationLayer(acceptMode) {
     //scrollHistoryTableBodyToBottom();
     //TODO: change while using toloka 
     if (acceptMode) {
-        //let zonesArray = JSON.parse(window.thisTask.getSolution().output_values.result);
-        let zonesArray = JSON.parse('[{"id":0, "status": false}, {"id":1, "status": true}]')
-        for (zone of zones) {
-            for (zoneData of zonesArray){
+        let tmp = window.thisTask.getSolution().output_values.result;
+        console.log(tmp);
+        let zonesArray = JSON.parse(tmp);
+        console.log(zonesArray);
+        //let zonesArray = JSON.parse('[{"id":0, "status": false}, {"id":1, "status": true}]')
+        for (let zone of zones) {
+            for (let zoneData of zonesArray){
                 if (zoneData.id == zone.path.pathId){
-                    console.log('fire');
                     if (zoneData.status){
                         zone.path.onClick();
                     }

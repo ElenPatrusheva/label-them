@@ -7,10 +7,10 @@ exports.Task = extend(TolokaHandlebarsTask, function (options) {
             if(!acceptMode) {
                 acceptMode = document.referrer.includes("status=REJECTED");
             }
-
-            initDOM(acceptMode);
-            initMultiLanguageSupport();
+            globalAcceptMode = acceptMode;
+            initDOM();
             initPresentationLayer(acceptMode);
+            initMultiLanguageSupport();
             initToolbar(acceptMode);
             initMinimap();
         });
@@ -19,12 +19,13 @@ exports.Task = extend(TolokaHandlebarsTask, function (options) {
 
     },
     onDestroy: function () {
+        
         /*global resetDataCollector*/
         /*eslint no-undef: "error"*/
         resetDataCollector();
         /*global resetSVGPolygonData*/
         /*eslint no-undef: "error"*/
-        //resetSVGPolygonData();
+        resetSVGPolygonData();
     }
 });
 
